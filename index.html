@@ -1,12 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>TightBinding++</title>
     <meta name="description" content="TightBinding++ - An open source tight-binding simulation software">
     <meta name="author" content="TightBinding++ Development Team">
     <link rel="icon" href="images/favicon.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/tbpp_style.css">
+
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-    <p>Hello, World!</p>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TightBinding++</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron" id="home_jumbotron">
+        <div class="container">
+            <br><br><br><br>
+            <div class="row">
+                <div class="col-xs-6">
+                <h2>TightBinding++</h2>
+                <p>A free and open source simulator for tight-binding systems</p>
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <br>
+            <p class="text-left"><a class="btn btn-success btn-lg" href="#download">
+                <span class="glyphicon glyphicon-save"></span>
+                &nbsp; Download TightBinding++</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="about" class="container-fluid">
+        <div clas="row">
+            <div class="col-sm-2 text-center"></div>
+            <div class="col-sm-8">
+                <h2>About</h2>
+                <p>
+                    TightBinding++ is a framework for simulating quantum
+                    tight-binding models. It enables users to simulate large
+                    tight-binding systems starting from a list of the
+                    positions and types of each site along with a real space
+                    description of the hopping parameters.
+                    <br><br>
+
+                    The framework aims to provide a comprehensive collection
+                    of user-friendly, multi-threaded tight-binding algorithms
+                    written entirely in C++11 to facilitate the study of
+                    models including those describing Topological systems such
+                    as Topological insulator and semi-metals as well as models
+                    derived using ab-initio techniques such as combining
+                    Density Functional Theory (DFT) with the Wannier
+                    projection method.
+                    <br><br>
+
+                    In addition to serving as a research tool, TightBinding++
+                    aims to be user-friendly and an educational resource for
+                    students at the graduate and advanced undergraduate
+                    level.
+
+                    There are various ways of using the framework including a
+                    Python 3 wrapper which enables defining and running
+                    simulations entirely using Python.
+
+                    Likewise, a graphical interface is currently under
+                    development which enables users to define and inspect
+                    TightBinding++ simulation pipelines with minimal
+                    programming knowledge.
+
+                    Finally, advanced users can easily incorporate modules
+                    into new C++ code by linking against the TBPP
+                    library.
+                    <br><br>
+
+                    Currently TightBinding++ provides various modules
+                    including algorithms for computing the density of states
+                    and band structure of a system, analyzing the effects of
+                    random impurities using the Coherent Potential
+                    Approximation and computing the electrical conductivity
+                    using the Kubo-Greenwood formalism.
+                    <br><br>
+
+                    Development of TightBinding++ began in mid 2016 in the
+                    Savrasov group at the
+                    <a href="http://physics.ucdavis.edu/">Department of Physics of
+                        the University of California, Davis</a>.
+                    The software is currently under heavy development.
+                </p>
+                <br>
+                <p class="text-right text-muted">
+                &mdash; TightBinding++ Development Team
+                </p>
+            </div>
+            <div class="col-sm-2 text-center"></div>
+        </div>
+    </div>
+
+    <div id="features" class="container-fluid bg-grey">
+        <h2>Features</h2>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-4 text-center"><img src="images/hop.png"/></div>
+                <div class="col-sm-8">
+                    <h3>Automated Generation of Hamiltonian Matrix</h3>
+                    <p>
+                        TightBinding++ automatically generates the Hamiltonian
+                        matrix from a list of the positions and types of each
+                        site along with the real space hopping parameters.
+                        For finite size lattices or periodic conditions,
+                        TightBinding++ is likewise able to incorporate effects
+                        due to external magnetic fields using the Peierls
+                        substitution method. This allows for one to consider
+                        different simulation parameters or lattice sizes
+                        without manually needing to determine the Hamiltonian
+                        matrix.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h3>Random On-Site Disorder</h3>
+                    <p>
+                        Simulate the effects of random on-site substitutions
+                        using the Coherent Potential Approximation (CPA). CPA
+                        is a method for simulating random on-site
+                        substitutions self-consistently without resorting to
+                        computationally intensive super-cell methods by
+                        solving for an effective self-energy of the medium.
+                        The method enables for the consideration of vacancies
+                        and impurities in large systems.
+                    </p>
+                </div>
+                <div class="col-sm-5 text-center"><img src="images/cpa.png"
+                                                       height=150px/></div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-4 text-center"><img src="images/j_sigma_E.png"/></div>
+                <div class="col-sm-8">
+                    <h3>Linear Response Electrical Conductivity</h3>
+                    <p>
+                        Compute the linear response electrical conductivity
+                        using the Kubo-Greenwood formalism. The framework
+                        provides both an approximate conductivity solver,
+                        which uses a constant artificial broadening parameter,
+                        as well as a solver using the self-energy matrix of
+                        the system. Together with the CPA module, this allows
+                        for computing the effects of disorder on the
+                        electrical conductivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3>Free and Open Source</h3>
+                    <p>
+                        TightBinding++ is licensed under the GNU General
+                        Public License version 3. Releases of the software are
+                        made freely available on GitHub.  This makes the
+                        software accessible to foster development, research
+                        and as an educational tool for students. Contributions
+                        to the development of the project are welcomed.
+                    </p>
+                </div>
+                <div class="col-sm-4 text-center"><img src="images/gpl-logo.png"/></div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-4 text-center"><img src="images/hdf5_file_icon.png"/></div>
+                <div class="col-sm-8">
+                    <h3>HDF5 File Format</h3>
+                    <p>TightBinding++ parameters and results are stored in <code>*.tbpp</code>
+                    files using the HDF5 file format.</p>
+                    <ul>
+                        <li>The entire simulation pipeline is saved insuring reproducible results.</li>
+                        <li>Directly import data and parameters into most
+                            modern data analysis environments for further
+                            post-processing (Python, R, Octave/SciLab/MATLAB,
+                            Mathematica, etc...).</li>
+                        <li>Binary format allows for compact storage of large data files.</li>
+                        <li>Easily share results and simulation setup among users.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3>Python 3 Integration</h3>
+                    <p>All TightBinding++ algorithms can seamlessly be used from Python 3.</p>
+                    <ul>
+                        <li>Create, edit and manage <code>*.tbpp</code> files
+                            entirely using python.</li>
+                        <li>Run and analyze simulations from python.</li>
+                        <li>Combine TightBinding++ algorithms with python code
+                            to generate custom simulation routines.</li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center"><img src="images/python-logo.png"/></div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-4 text-center"><i class="fa fa-code" style="font-size:120px;"></i></div>
+                <div class="col-sm-8">
+                    <h3>C++ API for Advanced Users</h3>
+                    <p>
+                        TightBinding++ algorithms are entirely written in
+                        C++11 in a reusable and modular fashion. They can
+                        easily be incorporated into new C++ code by linking
+                        against the TBPP library. Likewise, a modular design
+                        allows for functionality to be extended by adding new
+                        self-contained modules.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h3>Multi-Threaded Stand-Alone Solver</h3>
+                    <p>With <code>tbrun</code> one can solve
+                    <code>*.tbpp</code> files on any system with a modern
+                    C++11 compiler. This allows for time-intensive jobs to be
+                    submitted to clusters for processing regardless of whether
+                    Python 3 or a graphical interface is available on the
+                    target system.</p>
+                </div>
+                <div class="col-sm-4 text-center"><i class="fa fa-server" style="font-size:120px;"></i></div>
+            </div>
+        </div>
+
+        <div class="fbox">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <br>
+                    <i class="fa fa-linux" style="font-size:80px;"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <i class="fa fa-apple" style="font-size:80px;"></i>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <i class="fa fa-windows" style="font-size:80px;"></i>
+                </div>
+                <div class="col-sm-8">
+                    <h3>Cross Platform</h3>
+                    <p>
+                        TightBinding++ aims to be easy to install and targets
+                        GNU/Linux, macOS and Windows platforms. Insuring that
+                        regardless of computing environment, students and
+                        collaborators will be able to quickly begin using the
+                        framework.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="download" class="container-fluid">
+        <h2>Download</h2>
+        <p>
+        TightBinding++ is currently under heavy development and we are still
+        working towards a stable release.
+        The latest development version of the source code can be downloaded
+        from the GitHub project page.
+        </p>
+        <br>
+        
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Development Source Code</h3>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-default btn-lg btn-block" href="https://github.com/TightBinding/tbpp">
+                            <i class="fa fa-github fa-2x pull-left"></i>&nbsp;
+                            <strong>Github</strong> <br> <small> Visit GitHub Project Page</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    <div id="documentation" class="container-fluid bg-grey">
+        <h2>Documentation</h2>
+        <br>
+        <div class="text-center">
+            <a class="btn btn-default btn-lg" href="https://github.com/TightBinding/tbpp/wiki">
+                <i class="fa fa-rocket fa-5x"></i><br><h4>Getting Started/Tutorials</h4>
+            </a>
+            <a class="btn btn-default btn-lg" href="doc_api/index.html">
+                <i class="fa fa-book fa-5x"></i><br><h4>C++ API Documentation</h4>
+            </a>
+        </div>
+    </div>
+
+    <div id="acknowledgments" class="container-fluid">
+        <h2>Acknowledgment of Support and Disclaimer</h2>
+        This material is based upon work supported by the National Science
+        Foundation under Grant No. DMR-14-11336. Any opinions, findings, and
+        conclusions or recommendations expressed in this material are those of
+        the author(s) and do not necessarily reflect the views of the National
+        Science Foundation.
+    </div>
+
+
+    <footer>
+        <hr>
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <p class="text-left text-muted">
+                &copy; 2016-2017 The Regents of the University of California, Davis. All rights reserved.
+                </p>
+            </div>
+            <div class="col-sm-2">
+                <p class ="text-center">
+                <a href="https://www.ucdavis.edu/"><img src="images/uc_davis_logo.png" width="100"/></a>
+                </p>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
 </body>
 </html>

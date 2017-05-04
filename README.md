@@ -1,1 +1,2 @@
-# tightbinding.github.io
+# TightBinding Website
+This repository contains the main website and C++ API for TightBinding.

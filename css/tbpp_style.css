@@ -1,0 +1,40 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.jumbotron#home_jumbotron {
+    color: white;
+    background: url(../images/home_bg.png) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+.container-fluid {
+    padding: 60px 60px;
+}
+
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+footer {
+    background-color: #f6f6f6;
+}
+
+footer .container {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.fbox {
+    padding: 50px 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+}
+
+#documentation .btn {
+    margin: 5px 10px ;
+    padding: 20px;
+}
